@@ -1,5 +1,8 @@
 package edu.global.ex.page;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -52,4 +55,14 @@ public class PageVO {
       // realEnd가 끝번호(endPage)보다 큰 경우에만 존재
       this.next = this.endPage < realEnd; // >>
    }	   
+   
+   public String makeQuery(int page) {
+	      UriComponents uriComponentsBuilder = UriComponentsBuilder.newInstance()
+	            .queryParam("pageNum", page) // pageNum =  3
+	            .queryParam("amount", cri.getAmount()) // pageNum=3&amount=10
+	            .build(); // ?pageNum=3&amount=10
+	      return uriComponentsBuilder.toUriString(); // ?pageNum=3&amount=10 리턴
+	   }
+   
+   
 }

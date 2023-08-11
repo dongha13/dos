@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import edu.global.ex.page.Criteria;
 import edu.global.ex.vo.BoardVO;
 
 @Mapper
@@ -18,4 +19,7 @@ public interface BoardMapper {
 	public void updateShape(BoardVO board);
 	public void insertReply(BoardVO board);
 	
+	//페이징 처리 함수
+	int getTotalCount();
+	public List<BoardVO> getListWithPaging(Criteria cri);
 }
